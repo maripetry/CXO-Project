@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>First Bank of Australia - Salesforce Strategic Partnership Proposal</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+        }
+
+        /* Navigation */
+        nav {
+            position: sticky;
+            top: 0;
+            background-color: #001f3f;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.3s;
+            padding: 0.5rem 1rem;
+        }
+
+        nav a:hover {
+            color: #4da6ff;
+        }
+
+        nav a.active {
+            color: #4da6ff;
+            border-bottom: 2px solid #4da6ff;
+        }
+
+        /* Section Styles */
+        section {
+            display: none;
+            min-height: 100vh;
+            padding: 4rem 2rem;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        section.active {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Cover Section */
+        #cover {
+            background: linear-gradient(135deg, #001f3f 0%, #003d7a 100%);
+            color: white;
+            text-align: center;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .logo-section {
+            margin-bottom: 3rem;
+        }
+
+        .logo {
+            width: 200px;
+            height: auto;
+            margin-bottom: 2rem;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            letter-spacing: -1px;
+        }
+
+        .subtitle {
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            font-weight: 300;
+            color: rgba(255,255,255,0.9);
+        }
+
+        .tagline {
+            font-size: 1.1rem;
+            color: rgba(255,255,255,0.8);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .date-footer {
+            position: absolute;
+            bottom: 2rem;
+            right: 2rem;
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.6);
+        }
+
+        /* Content Sections */
+        .section-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 3px solid #001f3f;
+        }
+
+        .section-title {
+            font-size: 2.8rem;
+            color: #001f3f;
+            font-weight: 700;
+        }
+
+        .section-icon {
+            width: 80px;
+            height: 80px;
+            margin-right: 2rem;
+            background-color: #4da6ff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: white;
+        }
+
+        /* Content Cards */
+        .content-wrapper {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .card {
+            background-color: #f9f9f9;
+            border-left: 5px solid #001f3f;
+            padding: 2rem;
+            border-radius: 4px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: translateX(10px);
+            box-shadow: 0 4px 15px rgba(0,31,63,0.1);
+        }
+
+        .card h3 {
+            color: #001f3f;
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+
+        .card p {
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 0.5rem;
+        }
+
+        .challenge-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .challenge-list li {
+            padding: 0.8rem 0;
+            padding-left: 2rem;
+            position: relative;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        .challenge-list li:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #001f3f;
+            font-weight: bold;
+        }
+
+        /* SWOT Grid */
+        .swot-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .swot-box {
+            padding: 2rem;
+            border-radius: 8px;
+            color: white;
+            min-height: 300px;
+        }
+
+        .swot-box h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        .swot-box ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .swot-box li {
+            padding: 0.6rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+            line-height: 1.6;
+        }
+
+        .swot-box li:last-child {
+            border-bottom: none;
+        }
+
+        .strengths {
+            background: linear-gradient(135deg, #28a745 0%, #1e7e34 100%);
+        }
+
+        .weaknesses {
+            background: linear-gradient(135deg, #ffc107 0%, #e0a800 100%);
+        }
+
+        .opportunities {
+            background: linear-gradient(135deg, #4da6ff 0%, #003d7a 100%);
+        }
+
+        .threats {
+            background: linear-gradient(135deg, #dc3545 0%, #a02830 100%);
+        }
+
+        /* Why Salesforce */
+        .value-prop {
+            background-color: white;
+            border: 2px solid #001f3f;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            border-radius: 4px;
+        }
+
+        .value-prop h4 {
+            color: #001f3f;
+            margin-bottom: 0.8rem;
+            font-size: 1.2rem;
+        }
+
+        .value-prop p {
+            color: #555;
+            line-height: 1.7;
+        }
+
+        .pillars {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .pillar {
+            background: linear-gradient(135deg, #001f3f 0%, #003d7a 100%);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 4px;
+            border-top: 5px solid #4da6ff;
+        }
+
+        .pillar h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+        }
+
+        .pillar p {
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Next Steps */
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .timeline-item {
+            display: flex;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .timeline-item:not(:last-child)::before {
+            content: '';
+            position: absolute;
+            left: 40px;
+            top: 100px;
+            width: 2px;
+            height: 80px;
+            background-color: #001f3f;
+        }
+
+        .timeline-marker {
+            width: 80px;
+            height: 80px;
+            background-color: #001f3f;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin-right: 2rem;
+            flex-shrink: 0;
+        }
+
+        .timeline-content {
+            flex-grow: 1;
+            padding-top: 0.5rem;
+        }
+
+        .timeline-content h4 {
+            color: #001f3f;
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-content p {
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, #001f3f 0%, #003d7a 100%);
+            color: white;
+            padding: 3rem;
+            border-radius: 8px;
+            margin-top: 3rem;
+            text-align: center;
+        }
+
+        .cta-section h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #4da6ff;
+            color: white;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: background-color 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn:hover {
+            background-color: #3385cc;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .subtitle {
+                font-size: 1.3rem;
+            }
+
+            nav {
+                flex-direction: column;
+                gap: 0;
+            }
+
+            nav a {
+                border-bottom: 1px solid rgba(255,255,255,0.1);
+                padding: 1rem 0;
+                text-align: center;
+            }
+
+            .section-header {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .section-icon {
+                margin-right: 0;
+                margin-bottom: 1rem;
+            }
+
+            .swot-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .pillars {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 2rem 1rem;
+            }
+        }
+
+        /* Utility Classes */
+        .highlight {
+            color: #001f3f;
+            font-weight: 600;
+        }
+
+        .highlight-blue {
+            color: #4da6ff;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <a href="#cover" class="nav-link active">Cover</a>
+        <a href="#context" class="nav-link">Context & Challenges</a>
+        <a href="#swot" class="nav-link">SWOT Analysis</a>
+        <a href="#salesforce" class="nav-link">Why Salesforce</a>
+        <a href="#nextsteps" class="nav-link">Next Steps</a>
+    </nav>
+
+    <div class="container">
+        <!-- COVER SECTION -->
+        <section id="cover" class="active">
+            <div class="logo-section">
+                <svg class="logo" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                    <!-- FBA Logo placeholder - White circle with navy text -->
+                    <circle cx="100" cy="100" r="95" fill="white" stroke="#001f3f" stroke-width="2"/>
+                    <text x="100" y="115" font-size="48" font-weight="bold" text-anchor="middle" fill="#001f3f" font-family="Arial, sans-serif">FBA</text>
+                </svg>
+            </div>
+            <h1>First Bank of Australia</h1>
+            <p class="subtitle">Strategic Partnership Proposal</p>
+            <p class="subtitle" style="font-size: 1.3rem; font-weight: 400;">Salesforce Solution for Digital Transformation</p>
+            <p class="tagline">
+                Unlocking growth, innovation, and customer-centricity across the 4 Pillars of Business Transformation
+            </p>
+            <div class="date-footer">
+                June 2026
+            </div>
+        </section>
+
+        <!-- CONTEXT & CHALLENGES SECTION -->
+        <section id="context">
+            <div class="section-header">
+                <div class="section-icon">📊</div>
+                <h2 class="section-title">Context & Challenges</h2>
+            </div>
+
+            <div class="content-wrapper">
+                <div class="card">
+                    <h3>The FBA Opportunity</h3>
+                    <p>First Bank of Australia is a full-service bank with $12.6M retail customers and 900K SME clients across Europe, North America, and the recently acquired Brazilian operations. The strategic acquisition in Brazil positions FBA to capitalize on the LATAM market and use this region as an incubator for global transformation.</p>
+                </div>
+
+                <div class="card">
+                    <h3>Business Transformation: 4 Pillars</h3>
+                    <ul class="challenge-list">
+                        <li><span class="highlight">Scale & Growth:</span> Expand in Europe/North America and drive new growth in LATAM with agile market response</li>
+                        <li><span class="highlight">Macroeconomic Adaptation:</span> Respond to changing customer demand and economic forces impacting revenue and profitability</li>
+                        <li><span class="highlight">AI & Innovation:</span> Adapt to customer expectations driven by emerging technologies and competitive alternatives including embedded finance</li>
+                        <li><span class="highlight">Customer Experience:</span> Deliver responsive, personalized, adaptive journeys across all channels and markets</li>
+                        <li><span class="highlight">Value Maximization:</span> Focus on high-potential segments (SMEs, Gen Z) with expanded product consumption</li>
+                        <li><span class="highlight">Organizational Transformation:</span> Shift to customer-centric culture with enhanced security, compliance, and risk management</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h3>Current Business State</h3>
+                    <p>FBA achieved strong financial growth in the previous fiscal year with excellent financial risk management ratings. The organization has completed its 5-year business plan with ambitious targets to significantly accelerate income growth and nearly double profitability. The Brazilian market presents a highly digitized environment with open finance regulations—a fierce competitive landscape that demands rapid innovation.</p>
+                </div>
+
+                <div class="card">
+                    <h3>Salesforce Foundation in Brazil</h3>
+                    <p>Banco FBA already operates <span class="highlight">Salesforce Financial Services Cloud</span> with 530 users in Call Centre and Credit Card Operations, plus 25 Marketing users. <span class="highlight">Marketing Cloud</span> powers personalized offer management, and <span class="highlight">Mulesoft</span> integrates legacy systems. Current licence value: $650K (agreement ends January 2027).</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SWOT ANALYSIS SECTION -->
+        <section id="swot">
+            <div class="section-header">
+                <div class="section-icon">🎯</div>
+                <h2 class="section-title">SWOT Analysis</h2>
+            </div>
+
+            <div class="swot-grid">
+                <div class="swot-box strengths">
+                    <h3>Strengths</h3>
+                    <ul>
+                        <li>✓ Established Salesforce footprint in Banco FBA</li>
+                        <li>✓ Existing user base and operational expertise</li>
+                        <li>✓ Strong financial performance and market position</li>
+                        <li>✓ Proven integration capability with Mulesoft</li>
+                        <li>✓ Clear strategic vision and board-aligned transformation plan</li>
+                        <li>✓ Brazilian market as innovation incubator</li>
+                    </ul>
+                </div>
+
+                <div class="swot-box weaknesses">
+                    <h3>Weaknesses</h3>
+                    <ul>
+                        <li>⚠ Limited Salesforce adoption beyond Banco FBA (not yet scaled to parent company)</li>
+                        <li>⚠ Legacy system dependencies requiring significant integration effort</li>
+                        <li>⚠ Diverse markets (Europe, North America, LATAM) with different regulatory requirements</li>
+                        <li>⚠ Organizational change management challenges across multi-geography</li>
+                        <li>⚠ Limited Gen Z/digital-native product offerings to date</li>
+                        <li>⚠ Competitive pressure from established and neobank alternatives</li>
+                    </ul>
+                </div>
+
+                <div class="swot-box opportunities">
+                    <h3>Opportunities</h3>
+                    <ul>
+                        <li>→ Global rollout of Salesforce across all FBA markets</li>
+                        <li>→ Leverage Brazil as test market for AI, embedded finance, and innovation</li>
+                        <li>→ Expand to SME and Gen Z segments with personalized experiences</li>
+                        <li>→ Build comprehensive customer intelligence platform</li>
+                        <li>→ Enable omnichannel customer journeys across 1200 branches and 6000 ATMs</li>
+                        <li>→ Position as strategic technology partner for M&A integration</li>
+                    </ul>
+                </div>
+
+                <div class="swot-box threats">
+                    <h3>Threats</h3>
+                    <ul>
+                        <li>✕ Competitive vendors (Microsoft, others) increasing executive engagement</li>
+                        <li>✕ Multiple potential partners in evaluation process</li>
+                        <li>✕ Neobanks capturing market share with innovative digital-first models</li>
+                        <li>✕ Regulatory complexity and compliance burden in multiple markets</li>
+                        <li>✕ Rapid technology changes (AI, open finance) requiring continuous innovation</li>
+                        <li>✕ Transformation execution risk across diverse organizational structures</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- WHY SALESFORCE SECTION -->
+        <section id="salesforce">
+            <div class="section-header">
+                <div class="section-icon">⭐</div>
+                <h2 class="section-title">Why Salesforce</h2>
+            </div>
+
+            <div class="content-wrapper">
+                <div class="card">
+                    <h3>Strategic Partnership vs. Vendor Relationship</h3>
+                    <p>FBA's CXOs recognize that transformation success depends on more than software. They seek a <span class="highlight">strategic partner</span> who can:</p>
+                    <ul class="challenge-list">
+                        <li>Minimize execution risk across complex, multi-geography transformation</li>
+                        <li>Drive business outcomes aligned with the 4 Pillars strategy</li>
+                        <li>Provide ongoing innovation and competitive advantage</li>
+                        <li>Enable rapid scaling and M&A integration capabilities</li>
+                        <li>Support cultural and organizational transformation</li>
+                    </ul>
+                </div>
+
+                <h3 style="color: #001f3f; margin-top: 2rem; margin-bottom: 1.5rem;">Salesforce Enables the 4 Pillars</h3>
+
+                <div class="pillars">
+                    <div class="pillar">
+                        <h4>1️⃣ Scale & Growth</h4>
+                        <p>Financial Services Cloud and Service Cloud provide enterprise-scale architecture to manage millions of customers across geographies, seamlessly integrating with open finance requirements and enabling rapid expansion into new markets.</p>
+                    </div>
+
+                    <div class="pillar">
+                        <h4>2️⃣ Macroeconomic Adaptation</h4>
+                        <p>Salesforce's AI-powered analytics (Einstein) and real-time dashboards enable rapid insights into customer behavior changes, market trends, and profitability drivers—enabling agile response to economic forces.</p>
+                    </div>
+
+                    <div class="pillar">
+                        <h4>3️⃣ AI & Innovation</h4>
+                        <p>Einstein AI, embedded in all Salesforce clouds, enables next-generation capabilities: predictive analytics, intelligent recommendations, chatbots, and embedded finance connectors. Salesforce AppExchange provides pre-built fintech innovations.</p>
+                    </div>
+
+                    <div class="pillar">
+                        <h4>4️⃣ Customer Experience</h4>
+                        <p>Unified Customer 360 creates adaptive journeys across all channels. Personalization Engine delivers contextual experiences. Service Cloud, Commerce Cloud, and Marketing Cloud orchestrate seamless omnichannel interactions.</p>
+                    </div>
+
+                    <div class="pillar">
+                        <h4>5️⃣ Value Maximization</h4>
+                        <p>Segment-specific solutions for SMEs and Consumer Banking, combined with advanced targeting and propensity analytics, enable focus on highest-value customer segments and expanded product consumption.</p>
+                    </div>
+
+                    <div class="pillar">
+                        <h4>6️⃣ Organizational Transformation</h4>
+                        <p>Salesforce's customer-centric platform drives cultural change. Robust security, compliance, and privacy controls address regulatory challenges. Global delivery network and partner ecosystem ensure execution excellence.</p>
+                    </div>
+                </div>
+
+                <div class="card" style="margin-top: 2rem;">
+                    <h3>Competitive Advantages</h3>
+                    <ul class="challenge-list">
+                        <li><span class="highlight">Proven Success:</span> 1000+ financial institutions worldwide trust Salesforce</li>
+                        <li><span class="highlight">Brazilian Expertise:</span> Salesforce is #1 CRM in LATAM with deep market knowledge</li>
+                        <li><span class="highlight">Innovation at Scale:</span> Continuous releases with AI, embedded finance, and open banking capabilities</li>
+                        <li><span class="highlight">Ecosystem Strength:</span> Extensive partner network for implementation, managed services, and specialized solutions</li>
+                        <li><span class="highlight">M&A Ready:</span> Proven capability to rapidly integrate acquired systems and customers</li>
+                        <li><span class="highlight">Trust & Security:</span> Industry-leading compliance, certifications, and data protection</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- NEXT STEPS SECTION -->
+        <section id="nextsteps">
+            <div class="section-header">
+                <div class="section-icon">🚀</div>
+                <h2 class="section-title">Next Steps</h2>
+            </div>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-marker">1</div>
+                    <div class="timeline-content">
+                        <h4>Discovery & Alignment Meeting</h4>
+                        <p><strong>Objective:</strong> Validate FBA's strategic priorities and transformation vision with executive leadership. Confirm alignment of 4 Pillars with Salesforce capabilities and strategic partnership model.</p>
+                        <p><strong>Duration:</strong> 2-3 hours | <strong>Attendees:</strong> FBA CXOs + Salesforce Executive Team</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker">2</div>
+                    <div class="timeline-content">
+                        <h4>Competitive Evaluation & Proposal Refinement</h4>
+                        <p><strong>Objective:</strong> FBA evaluates Salesforce against other vendors. Salesforce team refines proposal based on deep-dive insights into current state, desired future state, and business priorities.</p>
+                        <p><strong>Duration:</strong> 2-4 weeks</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker">3</div>
+                    <div class="timeline-content">
+                        <h4>Leadership & Management Team Engagement</h4>
+                        <p><strong>Objective:</strong> Expand engagement beyond CXOs to CFO, CTO, COO and key business unit leaders. Validate technical feasibility, scope definition, and stakeholder alignment.</p>
+                        <p><strong>Duration:</strong> Multiple sessions over 3-4 weeks</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker">4</div>
+                    <div class="timeline-content">
+                        <h4>Detailed Scope, Process & Cost Definition</h4>
+                        <p><strong>Objective:</strong> Develop comprehensive implementation plan including:</p>
+                        <ul class="challenge-list">
+                            <li>Global rollout strategy and timeline</li>
+                            <li>Phased delivery roadmap (Brazil → North America → Europe)</li>
+                            <li>Integration architecture and legacy system decommissioning</li>
+                            <li>Change management and organizational transformation approach</li>
+                            <li>Detailed resource allocation, dependencies, and risk mitigation</li>
+                            <li>Commercial terms aligned with partnership model and outcomes</li>
+                        </ul>
+                        <p><strong>Duration:</strong> 4-6 weeks (intensive planning phase)</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker">5</div>
+                    <div class="timeline-content">
+                        <h4>Partnership Agreement & Program Kick-Off</h4>
+                        <p><strong>Objective:</strong> Execute strategic partnership agreement and formally launch multi-year transformation program with governance structure, success metrics, and joint accountability.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cta-section">
+                <h3>Ready to Transform Together</h3>
+                <p>
+                    Salesforce is committed to partnering with FBA on this strategic transformation journey. 
+                    Together, we will unlock growth, drive innovation, and deliver exceptional customer experiences 
+                    across all markets and segments.
+                </p>
+                <p style="font-size: 0.95rem; margin-top: 1.5rem;">
+                    Let's schedule your executive discovery meeting and explore how Salesforce can accelerate 
+                    your path to the 4 Pillars transformation.
+                </p>
+                <button class="btn" onclick="scrollToTop()">Schedule a Meeting</button>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Navigation functionality
+        const navLinks = document.querySelectorAll('.nav-link');
+        const sections = document.querySelectorAll('section');
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+
+                // Remove active class from all sections and nav links
+                sections.forEach(section => section.classList.remove('active'));
+                navLinks.forEach(nav => nav.classList.remove('active'));
+
+                // Add active class to clicked section and nav link
+                const targetId = link.getAttribute('href').substring(1);
+                const targetSection = document.getElementById(targetId);
+                
+                if (targetSection) {
+                    targetSection.classList.add('active');
+                    link.classList.add('active');
+                    targetSection.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Scroll to top function
+        function scrollToTop() {
+            const coverSection = document.getElementById('cover');
+            coverSection.classList.add('active');
+            sections.forEach(s => {
+                if (s.id !== 'cover') s.classList.remove('active');
+            });
+            navLinks.forEach(link => link.classList.remove('active'));
+            navLinks[0].classList.add('active');
+            coverSection.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+                const activeLink = document.querySelector('.nav-link.active');
+                const nextLink = activeLink?.nextElementSibling;
+                if (nextLink?.classList.contains('nav-link')) {
+                    nextLink.click();
+                }
+            } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+                const activeLink = document.querySelector('.nav-link.active');
+                const prevLink = activeLink?.previousElementSibling;
+                if (prevLink?.classList.contains('nav-link')) {
+                    prevLink.click();
+                }
+            }
+        });
+    </script>
+</body>
+</html>
