@@ -1,779 +1,740 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>First Bank of Australia - Salesforce Strategic Partnership Proposal</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f5f5f5;
-            color: #333;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            background-color: white;
-        }
-
-        /* Navigation */
-        nav {
-            position: sticky;
-            top: 0;
-            background-color: #001f3f;
-            padding: 1rem 2rem;
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            z-index: 100;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-
-        nav a {
-            color: white;
-            text-decoration: none;
-            font-size: 0.95rem;
-            font-weight: 500;
-            transition: color 0.3s;
-            padding: 0.5rem 1rem;
-        }
-
-        nav a:hover {
-            color: #4da6ff;
-        }
-
-        nav a.active {
-            color: #4da6ff;
-            border-bottom: 2px solid #4da6ff;
-        }
-
-        /* Section Styles */
-        section {
-            display: none;
-            min-height: 100vh;
-            padding: 4rem 2rem;
-            animation: fadeIn 0.5s ease-in;
-        }
-
-        section.active {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
-
-        /* Cover Section */
-        #cover {
-            background: linear-gradient(135deg, #001f3f 0%, #003d7a 100%);
-            color: white;
-            text-align: center;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .logo-section {
-            margin-bottom: 3rem;
-        }
-
-        .logo {
-            width: 200px;
-            height: auto;
-            margin-bottom: 2rem;
-        }
-
-        h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            font-weight: 700;
-            letter-spacing: -1px;
-        }
-
-        .subtitle {
-            font-size: 1.8rem;
-            margin-bottom: 2rem;
-            font-weight: 300;
-            color: rgba(255,255,255,0.9);
-        }
-
-        .tagline {
-            font-size: 1.1rem;
-            color: rgba(255,255,255,0.8);
-            max-width: 600px;
-            margin: 0 auto;
-            line-height: 1.6;
-        }
-
-        .date-footer {
-            position: absolute;
-            bottom: 2rem;
-            right: 2rem;
-            font-size: 0.9rem;
-            color: rgba(255,255,255,0.6);
-        }
-
-        /* Content Sections */
-        .section-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 3rem;
-            padding-bottom: 2rem;
-            border-bottom: 3px solid #001f3f;
-        }
-
-        .section-title {
-            font-size: 2.8rem;
-            color: #001f3f;
-            font-weight: 700;
-        }
-
-        .section-icon {
-            width: 80px;
-            height: 80px;
-            margin-right: 2rem;
-            background-color: #4da6ff;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2.5rem;
-            color: white;
-        }
-
-        /* Content Cards */
-        .content-wrapper {
-            display: grid;
-            gap: 2rem;
-        }
-
-        .card {
-            background-color: #f9f9f9;
-            border-left: 5px solid #001f3f;
-            padding: 2rem;
-            border-radius: 4px;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .card:hover {
-            transform: translateX(10px);
-            box-shadow: 0 4px 15px rgba(0,31,63,0.1);
-        }
-
-        .card h3 {
-            color: #001f3f;
-            margin-bottom: 1rem;
-            font-size: 1.4rem;
-        }
-
-        .card p {
-            line-height: 1.8;
-            color: #555;
-            margin-bottom: 0.5rem;
-        }
-
-        .challenge-list {
-            list-style: none;
-            padding: 0;
-        }
-
-        .challenge-list li {
-            padding: 0.8rem 0;
-            padding-left: 2rem;
-            position: relative;
-            line-height: 1.6;
-            color: #555;
-        }
-
-        .challenge-list li:before {
-            content: "→";
-            position: absolute;
-            left: 0;
-            color: #001f3f;
-            font-weight: bold;
-        }
-
-        /* SWOT Grid */
-        .swot-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .swot-box {
-            padding: 2rem;
-            border-radius: 8px;
-            color: white;
-            min-height: 300px;
-        }
-
-        .swot-box h3 {
-            font-size: 1.8rem;
-            margin-bottom: 1.5rem;
-            font-weight: 700;
-        }
-
-        .swot-box ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .swot-box li {
-            padding: 0.6rem 0;
-            border-bottom: 1px solid rgba(255,255,255,0.2);
-            line-height: 1.6;
-        }
-
-        .swot-box li:last-child {
-            border-bottom: none;
-        }
-
-        .strengths {
-            background: linear-gradient(135deg, #28a745 0%, #1e7e34 100%);
-        }
-
-        .weaknesses {
-            background: linear-gradient(135deg, #ffc107 0%, #e0a800 100%);
-        }
-
-        .opportunities {
-            background: linear-gradient(135deg, #4da6ff 0%, #003d7a 100%);
-        }
-
-        .threats {
-            background: linear-gradient(135deg, #dc3545 0%, #a02830 100%);
-        }
-
-        /* Why Salesforce */
-        .value-prop {
-            background-color: white;
-            border: 2px solid #001f3f;
-            padding: 2rem;
-            margin-bottom: 1.5rem;
-            border-radius: 4px;
-        }
-
-        .value-prop h4 {
-            color: #001f3f;
-            margin-bottom: 0.8rem;
-            font-size: 1.2rem;
-        }
-
-        .value-prop p {
-            color: #555;
-            line-height: 1.7;
-        }
-
-        .pillars {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-
-        .pillar {
-            background: linear-gradient(135deg, #001f3f 0%, #003d7a 100%);
-            color: white;
-            padding: 1.5rem;
-            border-radius: 4px;
-            border-top: 5px solid #4da6ff;
-        }
-
-        .pillar h4 {
-            font-size: 1.1rem;
-            margin-bottom: 0.8rem;
-            font-weight: 600;
-        }
-
-        .pillar p {
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-
-        /* Next Steps */
-        .timeline {
-            position: relative;
-            padding: 2rem 0;
-        }
-
-        .timeline-item {
-            display: flex;
-            margin-bottom: 3rem;
-            position: relative;
-        }
-
-        .timeline-item:not(:last-child)::before {
-            content: '';
-            position: absolute;
-            left: 40px;
-            top: 100px;
-            width: 2px;
-            height: 80px;
-            background-color: #001f3f;
-        }
-
-        .timeline-marker {
-            width: 80px;
-            height: 80px;
-            background-color: #001f3f;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.8rem;
-            font-weight: bold;
-            margin-right: 2rem;
-            flex-shrink: 0;
-        }
-
-        .timeline-content {
-            flex-grow: 1;
-            padding-top: 0.5rem;
-        }
-
-        .timeline-content h4 {
-            color: #001f3f;
-            font-size: 1.3rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .timeline-content p {
-            color: #555;
-            line-height: 1.6;
-        }
-
-        .cta-section {
-            background: linear-gradient(135deg, #001f3f 0%, #003d7a 100%);
-            color: white;
-            padding: 3rem;
-            border-radius: 8px;
-            margin-top: 3rem;
-            text-align: center;
-        }
-
-        .cta-section h3 {
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
-        }
-
-        .cta-section p {
-            font-size: 1.1rem;
-            margin-bottom: 2rem;
-        }
-
-        .btn {
-            display: inline-block;
-            background-color: #4da6ff;
-            color: white;
-            padding: 1rem 2rem;
-            text-decoration: none;
-            border-radius: 4px;
-            font-weight: 600;
-            transition: background-color 0.3s;
-            border: none;
-            cursor: pointer;
-            font-size: 1rem;
-        }
-
-        .btn:hover {
-            background-color: #3385cc;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2.5rem;
-            }
-
-            .subtitle {
-                font-size: 1.3rem;
-            }
-
-            nav {
-                flex-direction: column;
-                gap: 0;
-            }
-
-            nav a {
-                border-bottom: 1px solid rgba(255,255,255,0.1);
-                padding: 1rem 0;
-                text-align: center;
-            }
-
-            .section-header {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .section-icon {
-                margin-right: 0;
-                margin-bottom: 1rem;
-            }
-
-            .swot-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .pillars {
-                grid-template-columns: 1fr;
-            }
-
-            section {
-                padding: 2rem 1rem;
-            }
-        }
-
-        /* Utility Classes */
-        .highlight {
-            color: #001f3f;
-            font-weight: 600;
-        }
-
-        .highlight-blue {
-            color: #4da6ff;
-            font-weight: 600;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>First Bank of Australia — Salesforce Strategic Partnership</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --fba-dark:#001f3f;--fba-mid:#003d7a;--fba-blue:#4da6ff;
+  --fba-bg:#f5f7fa;--fba-hi:#EEF4FF;--sf-blue:#0176D3;
+  --ok:#059669;--warn:#D97706;--danger:#dc2626;
+  --text:#1a1a2e;--text2:#64748b;--border:#e2e8f0;--white:#ffffff;
+  --sw:280px;
+  --cco:#7C3AED;--cfo:#059669;--cio:#0176D3;--coo:#D97706;
+}
+html{scroll-behavior:smooth}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;font-size:14px;line-height:1.65;color:var(--text);background:var(--fba-bg)}
+
+/* ── SIDEBAR ── */
+.sidebar{position:fixed;top:0;left:0;width:var(--sw);height:100vh;background:var(--fba-dark);color:#fff;overflow-y:auto;display:flex;flex-direction:column;z-index:100;transition:transform .3s}
+.sb-head{padding:20px 20px 16px;border-bottom:1px solid rgba(255,255,255,.1);display:flex;flex-direction:column;align-items:center;gap:10px}
+.sb-logos{display:flex;align-items:center;gap:14px}
+.sb-fba{width:42px;height:42px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:12px;color:var(--fba-dark);flex-shrink:0}
+.sb-sep{width:1px;height:26px;background:rgba(255,255,255,.2)}
+.sb-sf{width:42px;height:42px}
+.sb-title{font-size:13px;font-weight:700;text-align:center}
+.sb-sub{font-size:10px;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:1.2px;text-align:center}
+.sb-nav{flex:1;padding:12px 0}
+.sb-nav ul{list-style:none}
+.sb-nav a{display:block;padding:9px 24px;color:rgba(255,255,255,.6);text-decoration:none;font-size:12.5px;font-weight:500;border-left:3px solid transparent;transition:all .15s}
+.sb-nav a:hover{color:#fff;background:rgba(255,255,255,.05);border-left-color:rgba(255,255,255,.3)}
+.sb-nav a.active{color:#fff;background:rgba(77,166,255,.18);border-left-color:var(--fba-blue);font-weight:600}
+.nav-lbl{padding:16px 24px 4px;font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.28)}
+.sb-foot{padding:14px 20px;border-top:1px solid rgba(255,255,255,.1);font-size:10px;color:rgba(255,255,255,.3);text-align:center}
+
+/* ── MAIN ── */
+.main{margin-left:var(--sw);min-height:100vh}
+.sec{display:none;padding:48px 60px;max-width:960px;margin:0 auto;animation:fi .3s ease}
+.sec.active{display:block}
+@keyframes fi{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.sec h2{font-size:24px;font-weight:700;color:var(--fba-dark);border-bottom:3px solid var(--fba-blue);padding-bottom:10px;margin-bottom:24px}
+.sec h3{font-size:16px;font-weight:600;color:var(--fba-mid);margin:28px 0 12px}
+.sec h4{font-size:14px;font-weight:600;color:var(--fba-dark);margin:16px 0 6px}
+.sec p{margin-bottom:12px}
+.sec ul,.sec ol{margin:8px 0 14px 22px}
+.sec li{margin-bottom:4px;font-size:13px}
+
+/* ── COVER ── */
+.cv-hero{background:linear-gradient(135deg,var(--fba-dark) 0%,#003d7a 55%,#005cbf 100%);padding:80px 60px;color:#fff;display:flex;flex-direction:column;align-items:center;text-align:center;position:relative;overflow:hidden}
+.cv-hero::before{content:'';position:absolute;top:-80px;right:-80px;width:420px;height:420px;background:rgba(255,255,255,.03);border-radius:50%}
+.cv-av{width:76px;height:76px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:22px;color:var(--fba-dark);margin-bottom:28px;position:relative;z-index:1}
+.cv-h1{font-size:36px;font-weight:700;margin-bottom:8px;position:relative;z-index:1}
+.cv-h2{font-size:17px;color:rgba(255,255,255,.85);margin-bottom:6px;position:relative;z-index:1}
+.cv-h3{font-size:13px;color:rgba(255,255,255,.5);margin-bottom:44px;position:relative;z-index:1}
+.cv-meta{display:grid;grid-template-columns:repeat(3,auto);gap:8px 32px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:10px;padding:18px 32px;position:relative;z-index:1}
+.ml{font-size:9px;text-transform:uppercase;letter-spacing:1px;color:rgba(255,255,255,.45)}
+.mv{font-size:12px;font-weight:700}
+.cv-body{padding:44px 60px;max-width:900px;margin:0 auto}
+
+/* ── CALLOUTS ── */
+.callout{border-radius:6px;padding:14px 18px;margin:18px 0;font-size:13px;line-height:1.6}
+.ci{border-left:4px solid var(--fba-blue);background:var(--fba-hi)}
+.cw{border-left:4px solid var(--warn);background:#FFFBEB}
+.cs{border-left:4px solid var(--ok);background:#ECFDF5}
+.cd{border-left:4px solid var(--danger);background:#FEF2F2}
+.cl{font-weight:700;font-size:11px;text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px}
+
+/* ── CARDS ── */
+.card{background:#fff;border-left:4px solid var(--fba-dark);padding:20px 24px;border-radius:6px;margin-bottom:14px;box-shadow:0 1px 4px rgba(0,0,0,.06);transition:transform .2s,box-shadow .2s}
+.card:hover{transform:translateX(4px);box-shadow:0 4px 12px rgba(0,0,0,.1)}
+.card h3{color:var(--fba-dark);font-size:15px;margin:0 0 8px}
+.card p{color:var(--text2);font-size:13px;line-height:1.7;margin-bottom:6px}
+.card ul{margin-left:18px}
+.card li{color:var(--text2);font-size:13px;line-height:1.7;margin-bottom:3px}
+
+/* ── GROWTH TABLE ── */
+.gt-wrap{overflow-x:auto;margin:20px 0;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,.08)}
+.gt{width:100%;border-collapse:collapse;font-size:13px;background:#fff}
+.gt thead th{background:var(--fba-dark);color:#fff;font-weight:600;padding:11px 16px;text-align:left;white-space:nowrap}
+.gt thead th:nth-child(2),.gt thead th:nth-child(3),.gt thead th:nth-child(4){text-align:right}
+.gt tbody tr{border-bottom:1px solid var(--border);transition:background .12s}
+.gt tbody tr:last-child{border-bottom:none}
+.gt tbody tr:hover{background:var(--fba-hi)}
+.gt td{padding:10px 16px;vertical-align:middle}
+.gt td:nth-child(2),.gt td:nth-child(3){text-align:right;font-weight:600;color:var(--fba-dark);white-space:nowrap}
+.gt td:nth-child(4){text-align:right;white-space:nowrap}
+.gt td:nth-child(5){white-space:nowrap}
+.gl{font-weight:500;color:var(--text)}
+.cp{color:var(--ok);font-weight:700}
+.cn{color:var(--ok);font-weight:700}
+.cx{color:var(--text2);font-weight:600}
+.rtags{display:flex;gap:4px;flex-wrap:wrap}
+.rt{display:inline-block;padding:2px 8px;border-radius:9px;font-size:10px;font-weight:700}
+.rt-cco{background:rgba(124,58,237,.1);color:var(--cco)}
+.rt-cfo{background:rgba(5,150,105,.1);color:var(--cfo)}
+.rt-cio{background:rgba(1,118,211,.1);color:var(--cio)}
+.rt-coo{background:rgba(217,119,6,.1);color:var(--coo)}
+
+/* ── SWOT ── */
+.swot{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:20px}
+.sb{padding:24px;border-radius:8px;color:#fff}
+.sb h3{font-size:16px;font-weight:700;margin-bottom:14px}
+.sb ul{list-style:none;padding:0}
+.sb li{padding:6px 0;border-bottom:1px solid rgba(255,255,255,.15);font-size:12.5px;line-height:1.6}
+.sb li:last-child{border-bottom:none}
+.s1{background:linear-gradient(135deg,#059669,#047857)}
+.s2{background:linear-gradient(135deg,#D97706,#B45309)}
+.s3{background:linear-gradient(135deg,#0176D3,#0058A0)}
+.s4{background:linear-gradient(135deg,#dc2626,#b91c1c)}
+
+/* ── PILLARS ── */
+.pg{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:20px 0}
+.pill{background:linear-gradient(135deg,var(--fba-dark),var(--fba-mid));color:#fff;padding:20px;border-radius:6px;border-top:4px solid var(--fba-blue)}
+.pill h4{font-size:13px;font-weight:700;margin-bottom:8px;color:#fff}
+.pill p{font-size:12px;line-height:1.65;color:rgba(255,255,255,.85);margin:0}
+
+/* ── TIMELINE ── */
+.tl{padding:4px 0}
+.ti{display:flex;margin-bottom:28px;position:relative}
+.ti:not(:last-child)::after{content:'';position:absolute;left:27px;top:56px;width:2px;height:calc(100% - 24px);background:var(--border)}
+.tn{width:56px;height:56px;border-radius:50%;background:var(--fba-dark);color:#fff;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:800;flex-shrink:0;margin-right:20px;z-index:1}
+.tb{flex:1;padding-top:6px}
+.tb h4{font-size:15px;color:var(--fba-dark);margin-bottom:6px}
+.tb p{font-size:13px;color:var(--text2);margin-bottom:4px}
+.tb ul{margin-left:18px}
+.tb li{font-size:13px;color:var(--text2);margin-bottom:3px}
+.cta{background:linear-gradient(135deg,var(--fba-dark),var(--fba-mid));color:#fff;padding:36px;border-radius:10px;margin-top:28px;text-align:center}
+.cta h3{font-size:20px;margin-bottom:10px}
+.cta p{font-size:14px;color:rgba(255,255,255,.8);margin:0}
+
+/* ── FILTER BAR ── */
+.fbar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:28px;padding:18px 20px;background:#fff;border-radius:10px;border:1px solid var(--border);box-shadow:0 1px 4px rgba(0,0,0,.06)}
+.fbtn{display:flex;align-items:center;gap:8px;padding:8px 16px;border-radius:20px;border:1.5px solid var(--border);background:var(--fba-bg);cursor:pointer;font-size:12.5px;font-weight:600;color:var(--text2);transition:all .14s}
+.fbtn:hover{border-color:var(--fba-dark);color:var(--fba-dark)}
+.fa{background:var(--fba-dark);border-color:var(--fba-dark);color:#fff}
+.fc{background:var(--cco);border-color:var(--cco);color:#fff}
+.ff{background:var(--cfo);border-color:var(--cfo);color:#fff}
+.fi2{background:var(--cio);border-color:var(--cio);color:#fff}
+.fo{background:var(--coo);border-color:var(--coo);color:#fff}
+.fd{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.da{background:var(--fba-dark)}.dc{background:var(--cco)}.df{background:var(--cfo)}.di{background:var(--cio)}.do{background:var(--coo)}
+
+/* ── EXEC CARD ── */
+.ec{display:flex;gap:22px;align-items:flex-start;background:#fff;border-radius:10px;padding:24px;border:1px solid var(--border);box-shadow:0 2px 8px rgba(0,0,0,.06);margin-bottom:24px}
+.ea{width:58px;height:58px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:18px;flex-shrink:0}
+.ei{flex:1}
+.ei h3{font-size:17px;color:var(--fba-dark);margin:0 0 2px}
+.erole{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;margin-bottom:8px}
+.ei p{font-size:13px;color:var(--text2);line-height:1.6;margin:0 0 10px}
+.olbl{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--text2);margin-bottom:6px}
+.otag{display:inline-block;padding:3px 10px;border-radius:12px;font-size:11px;font-weight:600;margin:2px}
+
+/* ── EXEC METRICS ── */
+.emets{margin-top:14px;border-top:1px solid var(--border);padding-top:14px}
+.eml{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--text2);margin-bottom:10px}
+.emr{display:flex;gap:10px;flex-wrap:wrap}
+.mc{background:var(--fba-bg);border:1px solid var(--border);border-radius:8px;padding:8px 12px}
+.mcl{font-size:10px;color:var(--text2);margin-bottom:3px}
+.mcv{display:flex;align-items:center;gap:5px;font-weight:700;color:var(--fba-dark);font-size:11px}
+.mcc{font-size:10px;font-weight:700;padding:1px 6px;border-radius:8px}
+.mcp{background:rgba(5,150,105,.12);color:var(--ok)}
+.mcn{background:rgba(5,150,105,.12);color:var(--ok)}
+
+/* ── PRIORITY CARDS ── */
+.pc{background:#fff;border-radius:8px;padding:18px 22px;border:1px solid var(--border);margin-bottom:12px;box-shadow:0 1px 3px rgba(0,0,0,.05);transition:box-shadow .2s}
+.pc:hover{box-shadow:0 4px 12px rgba(0,0,0,.1)}
+.pch{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;margin-bottom:8px}
+.pct{font-size:14px;font-weight:700;color:var(--fba-dark)}
+.pts{display:flex;gap:4px;flex-shrink:0;flex-wrap:wrap}
+.ct{display:inline-block;padding:2px 8px;border-radius:9px;font-size:10px;font-weight:700}
+.ctc{background:rgba(124,58,237,.1);color:var(--cco)}
+.ctf{background:rgba(5,150,105,.1);color:var(--cfo)}
+.cti{background:rgba(1,118,211,.1);color:var(--cio)}
+.cto{background:rgba(217,119,6,.1);color:var(--coo)}
+.pc p{font-size:13px;color:var(--text2);margin:0;line-height:1.7}
+
+/* ── DISCOVERY ── */
+.db{background:#fff;border-radius:10px;border:1px solid var(--border);padding:22px;margin-top:24px;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+.dbh{display:flex;align-items:center;gap:12px;margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid var(--border)}
+.dic{width:34px;height:34px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0}
+.dbh h3{font-size:15px;font-weight:700;color:var(--fba-dark);margin:0 0 2px}
+.dbh p{font-size:11px;color:var(--text2);margin:0}
+.dq{display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--border);align-items:flex-start}
+.dq:last-child{border-bottom:none}
+.dqn{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:10px;font-weight:800;flex-shrink:0;margin-top:1px}
+.dqt{font-size:13px;color:var(--text);line-height:1.65}
+
+/* ── UTILS ── */
+.hidden{display:none!important}
+.mob{display:none;position:fixed;top:12px;left:12px;z-index:200;background:var(--fba-dark);color:#fff;border:none;border-radius:6px;padding:8px 12px;cursor:pointer;font-size:18px}
+
+@media(max-width:900px){
+  .sidebar{transform:translateX(-100%)}
+  .sidebar.open{transform:translateX(0)}
+  .main{margin-left:0}
+  .mob{display:block}
+  .sec{padding:36px 20px}
+  .cv-hero{padding:48px 20px}
+  .cv-body{padding:36px 20px}
+  .cv-meta{grid-template-columns:1fr}
+  .swot,.pg{grid-template-columns:1fr}
+  .ec{flex-direction:column}
+  .emr{flex-direction:column}
+}
+</style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav>
-        <a href="#cover" class="nav-link active">Cover</a>
-        <a href="#context" class="nav-link">Context & Challenges</a>
-        <a href="#swot" class="nav-link">SWOT Analysis</a>
-        <a href="#salesforce" class="nav-link">Why Salesforce</a>
-        <a href="#nextsteps" class="nav-link">Next Steps</a>
-    </nav>
 
-    <div class="container">
-        <!-- COVER SECTION -->
-        <section id="cover" class="active">
-            <div class="logo-section">
-                <svg class="logo" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                    <!-- FBA Logo placeholder - White circle with navy text -->
-                    <circle cx="100" cy="100" r="95" fill="white" stroke="#001f3f" stroke-width="2"/>
-                    <text x="100" y="115" font-size="48" font-weight="bold" text-anchor="middle" fill="#001f3f" font-family="Arial, sans-serif">FBA</text>
-                </svg>
-            </div>
-            <h1>First Bank of Australia</h1>
-            <p class="subtitle">Strategic Partnership Proposal</p>
-            <p class="subtitle" style="font-size: 1.3rem; font-weight: 400;">Salesforce Solution for Digital Transformation</p>
-            <p class="tagline">
-                Unlocking growth, innovation, and customer-centricity across the 4 Pillars of Business Transformation
-            </p>
-            <div class="date-footer">
-                June 2026
-            </div>
-        </section>
+<button class="mob" onclick="document.querySelector('.sidebar').classList.toggle('open')">&#9776;</button>
 
-        <!-- CONTEXT & CHALLENGES SECTION -->
-        <section id="context">
-            <div class="section-header">
-                <div class="section-icon">📊</div>
-                <h2 class="section-title">Context & Challenges</h2>
-            </div>
-
-            <div class="content-wrapper">
-                <div class="card">
-                    <h3>The FBA Opportunity</h3>
-                    <p>First Bank of Australia is a full-service bank with $12.6M retail customers and 900K SME clients across Europe, North America, and the recently acquired Brazilian operations. The strategic acquisition in Brazil positions FBA to capitalize on the LATAM market and use this region as an incubator for global transformation.</p>
-                </div>
-
-                <div class="card">
-                    <h3>Business Transformation: 4 Pillars</h3>
-                    <ul class="challenge-list">
-                        <li><span class="highlight">Scale & Growth:</span> Expand in Europe/North America and drive new growth in LATAM with agile market response</li>
-                        <li><span class="highlight">Macroeconomic Adaptation:</span> Respond to changing customer demand and economic forces impacting revenue and profitability</li>
-                        <li><span class="highlight">AI & Innovation:</span> Adapt to customer expectations driven by emerging technologies and competitive alternatives including embedded finance</li>
-                        <li><span class="highlight">Customer Experience:</span> Deliver responsive, personalized, adaptive journeys across all channels and markets</li>
-                        <li><span class="highlight">Value Maximization:</span> Focus on high-potential segments (SMEs, Gen Z) with expanded product consumption</li>
-                        <li><span class="highlight">Organizational Transformation:</span> Shift to customer-centric culture with enhanced security, compliance, and risk management</li>
-                    </ul>
-                </div>
-
-                <div class="card">
-                    <h3>Current Business State</h3>
-                    <p>FBA achieved strong financial growth in the previous fiscal year with excellent financial risk management ratings. The organization has completed its 5-year business plan with ambitious targets to significantly accelerate income growth and nearly double profitability. The Brazilian market presents a highly digitized environment with open finance regulations—a fierce competitive landscape that demands rapid innovation.</p>
-                </div>
-
-                <div class="card">
-                    <h3>Salesforce Foundation in Brazil</h3>
-                    <p>Banco FBA already operates <span class="highlight">Salesforce Financial Services Cloud</span> with 530 users in Call Centre and Credit Card Operations, plus 25 Marketing users. <span class="highlight">Marketing Cloud</span> powers personalized offer management, and <span class="highlight">Mulesoft</span> integrates legacy systems. Current licence value: $650K (agreement ends January 2027).</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- SWOT ANALYSIS SECTION -->
-        <section id="swot">
-            <div class="section-header">
-                <div class="section-icon">🎯</div>
-                <h2 class="section-title">SWOT Analysis</h2>
-            </div>
-
-            <div class="swot-grid">
-                <div class="swot-box strengths">
-                    <h3>Strengths</h3>
-                    <ul>
-                        <li>✓ Established Salesforce footprint in Banco FBA</li>
-                        <li>✓ Existing user base and operational expertise</li>
-                        <li>✓ Strong financial performance and market position</li>
-                        <li>✓ Proven integration capability with Mulesoft</li>
-                        <li>✓ Clear strategic vision and board-aligned transformation plan</li>
-                        <li>✓ Brazilian market as innovation incubator</li>
-                    </ul>
-                </div>
-
-                <div class="swot-box weaknesses">
-                    <h3>Weaknesses</h3>
-                    <ul>
-                        <li>⚠ Limited Salesforce adoption beyond Banco FBA (not yet scaled to parent company)</li>
-                        <li>⚠ Legacy system dependencies requiring significant integration effort</li>
-                        <li>⚠ Diverse markets (Europe, North America, LATAM) with different regulatory requirements</li>
-                        <li>⚠ Organizational change management challenges across multi-geography</li>
-                        <li>⚠ Limited Gen Z/digital-native product offerings to date</li>
-                        <li>⚠ Competitive pressure from established and neobank alternatives</li>
-                    </ul>
-                </div>
-
-                <div class="swot-box opportunities">
-                    <h3>Opportunities</h3>
-                    <ul>
-                        <li>→ Global rollout of Salesforce across all FBA markets</li>
-                        <li>→ Leverage Brazil as test market for AI, embedded finance, and innovation</li>
-                        <li>→ Expand to SME and Gen Z segments with personalized experiences</li>
-                        <li>→ Build comprehensive customer intelligence platform</li>
-                        <li>→ Enable omnichannel customer journeys across 1200 branches and 6000 ATMs</li>
-                        <li>→ Position as strategic technology partner for M&A integration</li>
-                    </ul>
-                </div>
-
-                <div class="swot-box threats">
-                    <h3>Threats</h3>
-                    <ul>
-                        <li>✕ Competitive vendors (Microsoft, others) increasing executive engagement</li>
-                        <li>✕ Multiple potential partners in evaluation process</li>
-                        <li>✕ Neobanks capturing market share with innovative digital-first models</li>
-                        <li>✕ Regulatory complexity and compliance burden in multiple markets</li>
-                        <li>✕ Rapid technology changes (AI, open finance) requiring continuous innovation</li>
-                        <li>✕ Transformation execution risk across diverse organizational structures</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <!-- WHY SALESFORCE SECTION -->
-        <section id="salesforce">
-            <div class="section-header">
-                <div class="section-icon">⭐</div>
-                <h2 class="section-title">Why Salesforce</h2>
-            </div>
-
-            <div class="content-wrapper">
-                <div class="card">
-                    <h3>Strategic Partnership vs. Vendor Relationship</h3>
-                    <p>FBA's CXOs recognize that transformation success depends on more than software. They seek a <span class="highlight">strategic partner</span> who can:</p>
-                    <ul class="challenge-list">
-                        <li>Minimize execution risk across complex, multi-geography transformation</li>
-                        <li>Drive business outcomes aligned with the 4 Pillars strategy</li>
-                        <li>Provide ongoing innovation and competitive advantage</li>
-                        <li>Enable rapid scaling and M&A integration capabilities</li>
-                        <li>Support cultural and organizational transformation</li>
-                    </ul>
-                </div>
-
-                <h3 style="color: #001f3f; margin-top: 2rem; margin-bottom: 1.5rem;">Salesforce Enables the 4 Pillars</h3>
-
-                <div class="pillars">
-                    <div class="pillar">
-                        <h4>1️⃣ Scale & Growth</h4>
-                        <p>Financial Services Cloud and Service Cloud provide enterprise-scale architecture to manage millions of customers across geographies, seamlessly integrating with open finance requirements and enabling rapid expansion into new markets.</p>
-                    </div>
-
-                    <div class="pillar">
-                        <h4>2️⃣ Macroeconomic Adaptation</h4>
-                        <p>Salesforce's AI-powered analytics (Einstein) and real-time dashboards enable rapid insights into customer behavior changes, market trends, and profitability drivers—enabling agile response to economic forces.</p>
-                    </div>
-
-                    <div class="pillar">
-                        <h4>3️⃣ AI & Innovation</h4>
-                        <p>Einstein AI, embedded in all Salesforce clouds, enables next-generation capabilities: predictive analytics, intelligent recommendations, chatbots, and embedded finance connectors. Salesforce AppExchange provides pre-built fintech innovations.</p>
-                    </div>
-
-                    <div class="pillar">
-                        <h4>4️⃣ Customer Experience</h4>
-                        <p>Unified Customer 360 creates adaptive journeys across all channels. Personalization Engine delivers contextual experiences. Service Cloud, Commerce Cloud, and Marketing Cloud orchestrate seamless omnichannel interactions.</p>
-                    </div>
-
-                    <div class="pillar">
-                        <h4>5️⃣ Value Maximization</h4>
-                        <p>Segment-specific solutions for SMEs and Consumer Banking, combined with advanced targeting and propensity analytics, enable focus on highest-value customer segments and expanded product consumption.</p>
-                    </div>
-
-                    <div class="pillar">
-                        <h4>6️⃣ Organizational Transformation</h4>
-                        <p>Salesforce's customer-centric platform drives cultural change. Robust security, compliance, and privacy controls address regulatory challenges. Global delivery network and partner ecosystem ensure execution excellence.</p>
-                    </div>
-                </div>
-
-                <div class="card" style="margin-top: 2rem;">
-                    <h3>Competitive Advantages</h3>
-                    <ul class="challenge-list">
-                        <li><span class="highlight">Proven Success:</span> 1000+ financial institutions worldwide trust Salesforce</li>
-                        <li><span class="highlight">Brazilian Expertise:</span> Salesforce is #1 CRM in LATAM with deep market knowledge</li>
-                        <li><span class="highlight">Innovation at Scale:</span> Continuous releases with AI, embedded finance, and open banking capabilities</li>
-                        <li><span class="highlight">Ecosystem Strength:</span> Extensive partner network for implementation, managed services, and specialized solutions</li>
-                        <li><span class="highlight">M&A Ready:</span> Proven capability to rapidly integrate acquired systems and customers</li>
-                        <li><span class="highlight">Trust & Security:</span> Industry-leading compliance, certifications, and data protection</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <!-- NEXT STEPS SECTION -->
-        <section id="nextsteps">
-            <div class="section-header">
-                <div class="section-icon">🚀</div>
-                <h2 class="section-title">Next Steps</h2>
-            </div>
-
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-marker">1</div>
-                    <div class="timeline-content">
-                        <h4>Discovery & Alignment Meeting</h4>
-                        <p><strong>Objective:</strong> Validate FBA's strategic priorities and transformation vision with executive leadership. Confirm alignment of 4 Pillars with Salesforce capabilities and strategic partnership model.</p>
-                        <p><strong>Duration:</strong> 2-3 hours | <strong>Attendees:</strong> FBA CXOs + Salesforce Executive Team</p>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-marker">2</div>
-                    <div class="timeline-content">
-                        <h4>Competitive Evaluation & Proposal Refinement</h4>
-                        <p><strong>Objective:</strong> FBA evaluates Salesforce against other vendors. Salesforce team refines proposal based on deep-dive insights into current state, desired future state, and business priorities.</p>
-                        <p><strong>Duration:</strong> 2-4 weeks</p>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-marker">3</div>
-                    <div class="timeline-content">
-                        <h4>Leadership & Management Team Engagement</h4>
-                        <p><strong>Objective:</strong> Expand engagement beyond CXOs to CFO, CTO, COO and key business unit leaders. Validate technical feasibility, scope definition, and stakeholder alignment.</p>
-                        <p><strong>Duration:</strong> Multiple sessions over 3-4 weeks</p>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-marker">4</div>
-                    <div class="timeline-content">
-                        <h4>Detailed Scope, Process & Cost Definition</h4>
-                        <p><strong>Objective:</strong> Develop comprehensive implementation plan including:</p>
-                        <ul class="challenge-list">
-                            <li>Global rollout strategy and timeline</li>
-                            <li>Phased delivery roadmap (Brazil → North America → Europe)</li>
-                            <li>Integration architecture and legacy system decommissioning</li>
-                            <li>Change management and organizational transformation approach</li>
-                            <li>Detailed resource allocation, dependencies, and risk mitigation</li>
-                            <li>Commercial terms aligned with partnership model and outcomes</li>
-                        </ul>
-                        <p><strong>Duration:</strong> 4-6 weeks (intensive planning phase)</p>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-marker">5</div>
-                    <div class="timeline-content">
-                        <h4>Partnership Agreement & Program Kick-Off</h4>
-                        <p><strong>Objective:</strong> Execute strategic partnership agreement and formally launch multi-year transformation program with governance structure, success metrics, and joint accountability.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="cta-section">
-                <h3>Ready to Transform Together</h3>
-                <p>
-                    Salesforce is committed to partnering with FBA on this strategic transformation journey. 
-                    Together, we will unlock growth, drive innovation, and deliver exceptional customer experiences 
-                    across all markets and segments.
-                </p>
-                <p style="font-size: 0.95rem; margin-top: 1.5rem;">
-                    Let's schedule your executive discovery meeting and explore how Salesforce can accelerate 
-                    your path to the 4 Pillars transformation.
-                </p>
-                <button class="btn" onclick="scrollToTop()">Schedule a Meeting</button>
-            </div>
-        </section>
+<!-- SIDEBAR -->
+<aside class="sidebar">
+  <div class="sb-head">
+    <div class="sb-logos">
+      <div class="sb-fba">FBA</div>
+      <div class="sb-sep"></div>
+      <svg class="sb-sf" viewBox="0 0 80 56" xmlns="http://www.w3.org/2000/svg">
+        <path d="M33 11C35.4 8.4 38.8 6.8 42.6 6.8c5 0 9.4 2.8 11.8 7 2-.9 4.2-1.4 6.6-1.4C68.6 12.4 75 18.8 75 26.6S68.6 40.8 60.6 40.8H21.4C15 40.8 9.8 35.6 9.8 29.2s5.2-11.6 11.6-11.6c1.4 0 2.7.2 4 .6 1.5-2.8 3.9-5 6.8-7l.8-.2z" fill="#0176D3"/>
+        <text x="40" y="30" font-size="12" font-weight="700" text-anchor="middle" fill="white" font-family="Arial">SF</text>
+      </svg>
     </div>
+    <div class="sb-title">FBA Strategic Partnership</div>
+    <div class="sb-sub">Salesforce Proposal</div>
+  </div>
+  <nav class="sb-nav">
+    <ul>
+      <li><a href="#" data-s="cover" class="active">Cover</a></li>
+      <li class="nav-lbl">Context</li>
+      <li><a href="#" data-s="context">Context & Challenges</a></li>
+      <li><a href="#" data-s="growth">Growth Objectives</a></li>
+      <li><a href="#" data-s="clevel">C-Level Priorities</a></li>
+      <li class="nav-lbl">Analysis</li>
+      <li><a href="#" data-s="swot">SWOT Analysis</a></li>
+      <li class="nav-lbl">Proposal</li>
+      <li><a href="#" data-s="salesforce">Why Salesforce</a></li>
+      <li><a href="#" data-s="nextsteps">Next Steps</a></li>
+    </ul>
+  </nav>
+  <div class="sb-foot">Confidential — Internal Use<br>v1.1 · June 2026</div>
+</aside>
 
-    <script>
-        // Navigation functionality
-        const navLinks = document.querySelectorAll('.nav-link');
-        const sections = document.querySelectorAll('section');
+<main class="main">
 
-        navLinks.forEach(link => {
-            link.addEventListener('click', (e) => {
-                e.preventDefault();
+<!-- ═══════════════════════════════════ COVER ═══ -->
+<div class="sec active" id="cover">
+  <div class="cv-hero">
+    <div class="cv-av">FBA</div>
+    <h1 class="cv-h1">First Bank of Australia</h1>
+    <p class="cv-h2">Salesforce Strategic Partnership Proposal</p>
+    <p class="cv-h3">Digital Transformation · 4 Pillars · Global Expansion</p>
+    <div class="cv-meta">
+      <div><div class="ml">Version</div><div class="mv">1.1</div></div>
+      <div><div class="ml">Date</div><div class="mv">June 2026</div></div>
+      <div><div class="ml">Classification</div><div class="mv">Confidential</div></div>
+    </div>
+  </div>
+  <div class="cv-body">
+    <h2 style="font-size:22px;font-weight:700;color:var(--fba-dark);border-bottom:3px solid var(--fba-blue);padding-bottom:10px;margin-bottom:20px">About this document</h2>
+    <p>FBA is at an inflection point. A strong financial base, a bold 5-year plan, and a Brazilian acquisition create the conditions for global transformation — if the right platform partner is in place.</p>
+    <p>This document maps FBA's 4 Pillars of transformation to Salesforce capabilities, contextualizes each executive's priorities with their 2030 targets, and outlines a clear path to engagement.</p>
+    <div class="callout ci"><div class="cl">What this is</div>Executive-level capability map and strategic framing. Designed for CXO conversations — not technical deep-dives.</div>
+    <div class="callout cw"><div class="cl">What this is not</div>A scope document, licensing proposal, or implementation plan. Those come after alignment on direction.</div>
+  </div>
+</div>
 
-                // Remove active class from all sections and nav links
-                sections.forEach(section => section.classList.remove('active'));
-                navLinks.forEach(nav => nav.classList.remove('active'));
+<!-- ═══════════════════════════════════ CONTEXT ═══ -->
+<div class="sec" id="context">
+  <h2>Context & Challenges</h2>
+  <div class="card">
+    <h3>The FBA Opportunity</h3>
+    <p>FBA is a full-service bank with 13.5M retail customers and 900K SME clients across Europe, North America, and Brazil. The recent Brazilian acquisition positions FBA to use LATAM as an innovation incubator for global transformation. Strong financials and a board-aligned 5-year plan provide the mandate. The challenge is execution at scale.</p>
+  </div>
+  <div class="card">
+    <h3>4 Pillars of Transformation</h3>
+    <ul>
+      <li><strong>Scale & Growth:</strong> Expand in Europe/North America, drive new growth in LATAM with agility</li>
+      <li><strong>Macroeconomic Adaptation:</strong> Respond faster to market forces, improve profitability levers</li>
+      <li><strong>AI & Innovation:</strong> Match customer expectations set by neobanks and embedded finance</li>
+      <li><strong>Customer Experience:</strong> Deliver personalized, responsive journeys across all channels</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h3>Salesforce Footprint Today (Banco FBA)</h3>
+    <p>Salesforce is already embedded in Brazil. <strong>Financial Services Cloud</strong> serves 530 users in Call Centre and Credit Card Operations. <strong>Marketing Cloud</strong> powers personalized offer management. <strong>MuleSoft</strong> integrates legacy systems. Current licence value: $650K — agreement ends January 2027.</p>
+    <p>This is the foundation for global expansion, not a standalone deployment.</p>
+  </div>
+  <div class="callout cs"><div class="cl">The window</div>The January 2027 renewal is the natural moment to shift from vendor to strategic partner and extend the platform globally. The conversation needs to start now.</div>
+</div>
 
-                // Add active class to clicked section and nav link
-                const targetId = link.getAttribute('href').substring(1);
-                const targetSection = document.getElementById(targetId);
-                
-                if (targetSection) {
-                    targetSection.classList.add('active');
-                    link.classList.add('active');
-                    targetSection.scrollIntoView({ behavior: 'smooth' });
-                }
-            });
-        });
+<!-- ═══════════════════════════════════ GROWTH OBJECTIVES ═══ -->
+<div class="sec" id="growth">
+  <h2>Growth Objectives</h2>
+  <p style="color:var(--text2);margin-bottom:6px">Salesforce LATAM Scenario TBC-FBA — 5-year targets to December 2030. Ownership tags indicate which C-Level is primarily accountable for each metric.</p>
+  <div class="callout ci" style="margin-bottom:20px"><div class="cl">How to read this</div>Values marked <strong>*</strong> are in Millions and <strong>**</strong> in Billions. Green % = improvement. C-Level tags show who owns the outcome.</div>
 
-        // Scroll to top function
-        function scrollToTop() {
-            const coverSection = document.getElementById('cover');
-            coverSection.classList.add('active');
-            sections.forEach(s => {
-                if (s.id !== 'cover') s.classList.remove('active');
-            });
-            navLinks.forEach(link => link.classList.remove('active'));
-            navLinks[0].classList.add('active');
-            coverSection.scrollIntoView({ behavior: 'smooth' });
-        }
+  <div class="gt-wrap">
+    <table class="gt">
+      <thead>
+        <tr>
+          <th>Metric</th>
+          <th>Dec 2025</th>
+          <th>Dec 2030</th>
+          <th>Change</th>
+          <th>Owner</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="gl">Total Net Income</td>
+          <td>$6,348M</td><td>$10,000M</td>
+          <td class="cp">+55%</td>
+          <td><div class="rtags"><span class="rt rt-cco">CCO</span><span class="rt rt-cfo">CFO</span></div></td>
+        </tr>
+        <tr>
+          <td class="gl">Net Profit after taxes &amp; deductions</td>
+          <td>$1,153M</td><td>$2,200M</td>
+          <td class="cp">+91%</td>
+          <td><div class="rtags"><span class="rt rt-cfo">CFO</span><span class="rt rt-coo">COO</span></div></td>
+        </tr>
+        <tr>
+          <td class="gl">Banking net interest margin</td>
+          <td>1.18%</td><td>2.5%</td>
+          <td class="cp">+112%</td>
+          <td><div class="rtags"><span class="rt rt-cfo">CFO</span></div></td>
+        </tr>
+        <tr>
+          <td class="gl">Cost to Income Ratio</td>
+          <td>50.5%</td><td>40%</td>
+          <td class="cn">−21%</td>
+          <td><div class="rtags"><span class="rt rt-coo">COO</span><span class="rt rt-cfo">CFO</span></div></td>
+        </tr>
+        <tr>
+          <td class="gl">Core capital ratio</td>
+          <td>13.1%</td><td>14%</td>
+          <td class="cp">+6.9%</td>
+          <td><div class="rtags"><span class="rt rt-cfo">CFO</span></div></td>
+        </tr>
+        <tr>
+          <td class="gl">Loan-to-deposit ratio</td>
+          <td>119%</td><td>120%</td>
+          <td class="cx">+0.8%</td>
+          <td><div class="rtags"><span class="rt rt-cfo">CFO</span></div></td>
+        </tr>
+        <tr>
+          <td class="gl">Gross mortgage lending</td>
+          <td>$45B</td><td>$65B</td>
+          <td class="cp">+44%</td>
+          <td><div class="rtags"><span class="rt rt-cco">CCO</span><span class="rt rt-cfo">CFO</span></div></td>
+        </tr>
+        <tr>
+          <td class="gl">Total customers</td>
+          <td>13.5M</td><td>&gt;16M</td>
+          <td class="cp">+18.5%</td>
+          <td><div class="rtags"><span class="rt rt-cco">CCO</span><span class="rt rt-coo">COO</span></div></td>
+        </tr>
+        <tr>
+          <td class="gl">Lending growth to SMEs (p.a.)</td>
+          <td>18%</td><td>20%</td>
+          <td class="cp">+11%</td>
+          <td><div class="rtags"><span class="rt rt-cco">CCO</span></div></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="font-size:11px;color:var(--text2);margin-top:8px">* Million &nbsp;|&nbsp; ** Billion</p>
 
-        // Keyboard navigation
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
-                const activeLink = document.querySelector('.nav-link.active');
-                const nextLink = activeLink?.nextElementSibling;
-                if (nextLink?.classList.contains('nav-link')) {
-                    nextLink.click();
-                }
-            } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
-                const activeLink = document.querySelector('.nav-link.active');
-                const prevLink = activeLink?.previousElementSibling;
-                if (prevLink?.classList.contains('nav-link')) {
-                    prevLink.click();
-                }
-            }
-        });
-    </script>
+  <div class="callout cw" style="margin-top:24px">
+    <div class="cl">The Salesforce angle</div>
+    These targets require FBA to move faster, know customers better, and operate leaner — simultaneously. No single metric is achievable in isolation. Salesforce provides the connective tissue that makes them mutually reinforcing.
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════ C-LEVEL ═══ -->
+<div class="sec" id="clevel">
+  <h2>C-Level Priorities</h2>
+  <p style="color:var(--text2);margin-bottom:22px">Select an executive to see their profile, 2030 targets, the challenges that matter most to them, and discovery questions for your next meeting.</p>
+
+  <!-- FILTER BAR -->
+  <div class="fbar">
+    <button class="fbtn fa" onclick="filterCL(this,'all')"><span class="fd da"></span>All FBA</button>
+    <button class="fbtn" onclick="filterCL(this,'cco')"><span class="fd dc"></span>CCO — Hilary Dubois</button>
+    <button class="fbtn" onclick="filterCL(this,'cfo')"><span class="fd df"></span>CFO — Tony Dixon</button>
+    <button class="fbtn" onclick="filterCL(this,'cio')"><span class="fd di"></span>CIO — Richard Ormerod</button>
+    <button class="fbtn" onclick="filterCL(this,'coo')"><span class="fd do"></span>COO — John Bunker</button>
+  </div>
+
+  <!-- ── CCO PROFILE ── -->
+  <div class="ec hidden" id="prof-cco">
+    <div class="ea" style="background:var(--cco)">HD</div>
+    <div class="ei">
+      <h3>Hilary Dubois</h3>
+      <div class="erole" style="color:var(--cco)">Chief Commercial Officer</div>
+      <p>Drives top-line growth. Owns the mandate to expand in SMEs and private segments, increase product holdings per customer, and reimagine the branch network as an omnichannel revenue engine. Needs tools that convert customer data into commercial action at scale.</p>
+      <div class="olbl">Owns</div>
+      <span class="otag" style="background:rgba(124,58,237,.1);color:var(--cco)">SME Growth</span>
+      <span class="otag" style="background:rgba(124,58,237,.1);color:var(--cco)">Product Cross-sell</span>
+      <span class="otag" style="background:rgba(124,58,237,.1);color:var(--cco)">Omnichannel CX</span>
+      <span class="otag" style="background:rgba(124,58,237,.1);color:var(--cco)">Branch Transformation</span>
+      <div class="emets">
+        <div class="eml">2025 → 2030 Targets</div>
+        <div class="emr">
+          <div class="mc"><div class="mcl">Total Net Income</div><div class="mcv">$6.3B → $10B <span class="mcc mcp">+55%</span></div></div>
+          <div class="mc"><div class="mcl">Total Customers</div><div class="mcv">13.5M → &gt;16M <span class="mcc mcp">+18.5%</span></div></div>
+          <div class="mc"><div class="mcl">SME Lending (p.a.)</div><div class="mcv">18% → 20% <span class="mcc mcp">+11%</span></div></div>
+          <div class="mc"><div class="mcl">Gross Mortgage Lending</div><div class="mcv">$45B → $65B <span class="mcc mcp">+44%</span></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── CFO PROFILE ── -->
+  <div class="ec hidden" id="prof-cfo">
+    <div class="ea" style="background:var(--cfo)">TD</div>
+    <div class="ei">
+      <h3>Tony Dixon</h3>
+      <div class="erole" style="color:var(--cfo)">Chief Financial Officer</div>
+      <p>Custodian of the $250M transformation budget. Accountable to the Board for Finance, Risk, Treasury, M&amp;A, and Compliance across all geographies. Pushing for real-time performance and governance visibility. Controls the investment process that funds this entire program.</p>
+      <div class="olbl">Owns</div>
+      <span class="otag" style="background:rgba(5,150,105,.1);color:var(--cfo)">$250M Program Budget</span>
+      <span class="otag" style="background:rgba(5,150,105,.1);color:var(--cfo)">Board Reporting</span>
+      <span class="otag" style="background:rgba(5,150,105,.1);color:var(--cfo)">M&A Integration</span>
+      <span class="otag" style="background:rgba(5,150,105,.1);color:var(--cfo)">Regulatory Compliance</span>
+      <div class="emets">
+        <div class="eml">2025 → 2030 Targets</div>
+        <div class="emr">
+          <div class="mc"><div class="mcl">Net Profit (post-tax)</div><div class="mcv">$1.15B → $2.2B <span class="mcc mcp">+91%</span></div></div>
+          <div class="mc"><div class="mcl">Net Interest Margin</div><div class="mcv">1.18% → 2.5% <span class="mcc mcp">+112%</span></div></div>
+          <div class="mc"><div class="mcl">Core Capital Ratio</div><div class="mcv">13.1% → 14% <span class="mcc mcp">+6.9%</span></div></div>
+          <div class="mc"><div class="mcl">Cost to Income Ratio</div><div class="mcv">50.5% → 40% <span class="mcc mcn">−21%</span></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── CIO PROFILE ── -->
+  <div class="ec hidden" id="prof-cio">
+    <div class="ea" style="background:var(--cio)">RO</div>
+    <div class="ei">
+      <h3>Richard Ormerod</h3>
+      <div class="erole" style="color:var(--cio)">Chief Information Officer</div>
+      <p>Runs all IT and Communications across Europe and North America. Co-chairs the AI Leadership Group. Fully committed to becoming a digital bank and building the New Frontier Banking Platform. No legacy ties to current vendors — evaluates on merit. Every program target above depends on his platform decisions.</p>
+      <div class="olbl">Owns</div>
+      <span class="otag" style="background:rgba(1,118,211,.1);color:var(--cio)">IT Strategy</span>
+      <span class="otag" style="background:rgba(1,118,211,.1);color:var(--cio)">AI Leadership Group</span>
+      <span class="otag" style="background:rgba(1,118,211,.1);color:var(--cio)">Core Banking Transformation</span>
+      <span class="otag" style="background:rgba(1,118,211,.1);color:var(--cio)">Vendor Architecture</span>
+      <div class="emets">
+        <div class="eml">Platform Enablement — what Richard's decisions make possible</div>
+        <div class="emr">
+          <div class="mc"><div class="mcl">Total Net Income (enabled)</div><div class="mcv">$6.3B → $10B <span class="mcc mcp">+55%</span></div></div>
+          <div class="mc"><div class="mcl">Net Interest Margin (enabled)</div><div class="mcv">1.18% → 2.5% <span class="mcc mcp">+112%</span></div></div>
+          <div class="mc"><div class="mcl">Total Customers (enabled)</div><div class="mcv">13.5M → &gt;16M <span class="mcc mcp">+18.5%</span></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── COO PROFILE ── -->
+  <div class="ec hidden" id="prof-coo">
+    <div class="ea" style="background:var(--coo)">JB</div>
+    <div class="ei">
+      <h3>John Bunker</h3>
+      <div class="erole" style="color:var(--coo)">Chief Operating Officer</div>
+      <p>Executive Champion of "Pillar C" — the productivity and cost efficiency drive. Owns branches, call centres, processing centres, and shared services. Targeting a 40% cost-to-income ratio through process automation and branch repurposing. Key stakeholder in AI-driven front and back office digitization.</p>
+      <div class="olbl">Owns</div>
+      <span class="otag" style="background:rgba(217,119,6,.1);color:var(--coo)">Operational Efficiency</span>
+      <span class="otag" style="background:rgba(217,119,6,.1);color:var(--coo)">Branch Network</span>
+      <span class="otag" style="background:rgba(217,119,6,.1);color:var(--coo)">Call Centres</span>
+      <span class="otag" style="background:rgba(217,119,6,.1);color:var(--coo)">Front/Back Office Digital</span>
+      <div class="emets">
+        <div class="eml">2025 → 2030 Targets</div>
+        <div class="emr">
+          <div class="mc"><div class="mcl">Cost to Income Ratio</div><div class="mcv">50.5% → 40% <span class="mcc mcn">−21%</span></div></div>
+          <div class="mc"><div class="mcl">Net Profit (post-tax)</div><div class="mcv">$1.15B → $2.2B <span class="mcc mcp">+91%</span></div></div>
+          <div class="mc"><div class="mcl">Total Customers</div><div class="mcv">13.5M → &gt;16M <span class="mcc mcp">+18.5%</span></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── PRIORITY CARDS ── -->
+  <div id="pcards">
+    <div class="pc" data-l="cco cfo cio coo">
+      <div class="pch"><div class="pct">Fragmented Customer View Across Channels &amp; Geographies</div>
+      <div class="pts"><span class="ct ctc">CCO</span><span class="ct ctf">CFO</span><span class="ct cti">CIO</span><span class="ct cto">COO</span></div></div>
+      <p>With 13.5M retail and 900K SME customers across three geographies and multiple legacy systems, no one has a single, actionable view. Every team — commercial, ops, IT, finance — is working from a partial picture.</p>
+    </div>
+    <div class="pc" data-l="cco">
+      <div class="pch"><div class="pct">SME &amp; Private Segment Growth — $65B Mortgage + 20% SME Lending by 2030</div>
+      <div class="pts"><span class="ct ctc">CCO</span></div></div>
+      <p>The SME portfolio is the highest-growth segment — but acquisition and cross-sell are not yet data-driven. Reaching 20% annual SME lending growth and $65B in mortgage lending requires knowing which product fits which customer, at scale, at the right moment.</p>
+    </div>
+    <div class="pc" data-l="cco coo">
+      <div class="pch"><div class="pct">Branch Network Transformation — 1,200 Branches, New Role</div>
+      <div class="pts"><span class="ct ctc">CCO</span><span class="ct cto">COO</span></div></div>
+      <p>Branches built for transactions need to become advisory hubs. Reaching 16M+ customers while lowering cost-to-income to 40% requires both commercial uplift and operational efficiency from the same network — simultaneously.</p>
+    </div>
+    <div class="pc" data-l="cco coo">
+      <div class="pch"><div class="pct">Omnichannel Journey Continuity</div>
+      <div class="pts"><span class="ct ctc">CCO</span><span class="ct cto">COO</span></div></div>
+      <p>Customers move between digital and physical without continuity. A customer who starts on the app and walks into a branch is starting from scratch. Every broken handoff is a lost conversion and an avoidable cost.</p>
+    </div>
+    <div class="pc" data-l="cfo">
+      <div class="pch"><div class="pct">Board-Level Performance &amp; Governance Visibility — +91% Net Profit Target</div>
+      <div class="pts"><span class="ct ctf">CFO</span></div></div>
+      <p>Tony is pushing for real-time insight into performance, risk, and governance across all markets. Today's reporting is retrospective and siloed. With net profit targets of +91% and net interest margin doubling to 2.5%, the Board needs forward-looking visibility — not end-of-quarter summaries.</p>
+    </div>
+    <div class="pc" data-l="cfo cio">
+      <div class="pch"><div class="pct">$250M Program Investment Tracking &amp; ROI</div>
+      <div class="pts"><span class="ct ctf">CFO</span><span class="ct cti">CIO</span></div></div>
+      <p>Tony controls the budget; Richard controls the platform decisions. Both need structured investment tracking and clear ROI measurement tied to the 2030 targets. Without connecting spend to outcomes, a $250M program risks becoming a cost centre without a narrative.</p>
+    </div>
+    <div class="pc" data-l="cfo cio">
+      <div class="pch"><div class="pct">Multi-Geography Regulatory Compliance</div>
+      <div class="pts"><span class="ct ctf">CFO</span><span class="ct cti">CIO</span></div></div>
+      <p>GDPR (Europe), Open Finance (Brazil), and North American financial regulation represent three distinct frameworks. Manual compliance at this scale is unsustainable. Automation, audit trails, and centralized data governance are the path forward.</p>
+    </div>
+    <div class="pc" data-l="cfo cio">
+      <div class="pch"><div class="pct">M&amp;A Integration Speed &amp; Scalability</div>
+      <div class="pts"><span class="ct ctf">CFO</span><span class="ct cti">CIO</span></div></div>
+      <p>The Brazilian acquisition is the first, not the last. A common CRM and engagement platform reduces integration cost and time-to-value for each future deal. Salesforce has integrated 1,000+ financial institutions globally — this capability is built in, not built from scratch each time.</p>
+    </div>
+    <div class="pc" data-l="cio">
+      <div class="pch"><div class="pct">New Frontier Banking Platform Architecture</div>
+      <div class="pts"><span class="ct cti">CIO</span></div></div>
+      <p>Richard's mandate is to modernize the Banking Core toward an API-first, cloud-native platform. The right CRM partner is one whose architecture is designed for integration — and whose roadmap aligns with where banking technology is heading, not where it's been.</p>
+    </div>
+    <div class="pc" data-l="cio coo cco">
+      <div class="pch"><div class="pct">AI in Production — Closing the Lab-to-Live Gap</div>
+      <div class="pts"><span class="ct cti">CIO</span><span class="ct cto">COO</span><span class="ct ctc">CCO</span></div></div>
+      <p>The AI Leadership Group has organizational commitment. But AI projects routinely stall before production. The gap is integration: AI needs clean, connected operational data to deliver real impact. The right platform embeds AI in workflows — it doesn't sit alongside them.</p>
+    </div>
+    <div class="pc" data-l="coo">
+      <div class="pch"><div class="pct">Cost-to-Income: 50.5% → 40% by 2030 — Pillar C</div>
+      <div class="pts"><span class="ct cto">COO</span></div></div>
+      <p>John's headline target is a 10-point reduction in cost-to-income ratio. The lever is meaningful, measurable process automation across branches, call centres, and back office — reducing high-cost manual interactions without degrading the customer experience.</p>
+    </div>
+    <div class="pc" data-l="coo">
+      <div class="pch"><div class="pct">Front &amp; Back Office Digitization</div>
+      <div class="pts"><span class="ct cto">COO</span></div></div>
+      <p>Call centre agents lack a unified customer view — high handle time, low first-call resolution. Back office is disconnected from front office decisions. Digitizing both with AI-assisted workflows is where John's operational leverage lives.</p>
+    </div>
+  </div>
+
+  <!-- ── DISCOVERY QUESTIONS ── -->
+
+  <!-- CCO -->
+  <div class="db hidden" id="disc-cco">
+    <div class="dbh">
+      <div class="dic" style="background:rgba(124,58,237,.1)">💬</div>
+      <div><h3>Discovery Questions — Hilary Dubois (CCO)</h3><p>Use these to open the conversation and find where Salesforce creates the most value</p></div>
+    </div>
+    <div class="dq"><div class="dqn" style="background:var(--cco)">1</div><div class="dqt">When you look at your SME portfolio today, where is the bigger gap — bringing in new clients, or getting more from the ones you already have? What's the data behind that view?</div></div>
+    <div class="dq"><div class="dqn" style="background:var(--cco)">2</div><div class="dqt">You have a mortgage lending target of $65B by 2030. What's your current conversion rate from qualified lead to closed deal — and where does that process break down?</div></div>
+    <div class="dq"><div class="dqn" style="background:var(--cco)">3</div><div class="dqt">If a customer starts on the app then walks into a branch — how much of that context carries over to the advisor? What does that gap cost in lost conversions today?</div></div>
+    <div class="dq"><div class="dqn" style="background:var(--cco)">4</div><div class="dqt">What does "reimagining the branch" look like in practice? What should it be able to do in three years that it can't do today?</div></div>
+    <div class="dq"><div class="dqn" style="background:var(--cco)">5</div><div class="dqt">How are commercial teams currently identifying which customers are ready for a new product? What's manual vs. data-driven in that motion?</div></div>
+    <div class="dq"><div class="dqn" style="background:var(--cco)">6</div><div class="dqt">Brazil is the innovation incubator. What's the one commercial capability you want to test there that you haven't been able to deploy elsewhere in the group?</div></div>
+  </div>
+
+  <!-- CFO -->
+  <div class="db hidden" id="disc-cfo">
+    <div class="dbh">
+      <div class="dic" style="background:rgba(5,150,105,.1)">💬</div>
+      <div><h3>Discovery Questions — Tony Dixon (CFO)</h3><p>Use these to open the conversation and find where Salesforce creates the most value</p></div>
+    </div>
+    <div class="dq"><div class="dqn" style="background:var(--cfo)">1</div><div class="dqt">When the Board asks how the $250M transformation program is tracking — what does that conversation look like today? What frustrates you about it?</div></div>
+    <div class="dq"><div class="dqn" style="background:var(--cfo)">2</div><div class="dqt">You're targeting +91% net profit by 2030. How are you currently connecting platform investment decisions to that outcome — and where is the reporting gap?</div></div>
+    <div class="dq"><div class="dqn" style="background:var(--cfo)">3</div><div class="dqt">Across Europe, North America, and Brazil — how consistent is your performance and risk reporting at group level? Where are the biggest blind spots?</div></div>
+    <div class="dq"><div class="dqn" style="background:var(--cfo)">4</div><div class="dqt">From a financial governance standpoint, what's your biggest concern about the Brazilian acquisition integration — and how is it being managed today?</div></div>
+    <div class="dq"><div class="dqn" style="background:var(--cfo)">5</div><div class="dqt">If you had real-time visibility into performance and risk across all markets tomorrow — which decision would you make differently?</div></div>
+    <div class="dq"><div class="dqn" style="background:var(--cfo)">6</div><div class="dqt">As the budget holder, what does a partner need to demonstrate — beyond capability — to earn a long-term strategic relationship rather than a line-item contract?</div></div>
+  </div>
+
+  <!-- CIO -->
+  <div class="db hidden" id="disc-cio">
+    <div class="dbh">
+      <div class="dic" style="background:rgba(1,118,211,.1)">💬</div>
+      <div><h3>Discovery Questions — Richard Ormerod (CIO)</h3><p>Use these to open the conversation and find where Salesforce creates the most value</p></div>
+    </div>
+    <div class="dq"><div class="dqn" style="background:var(--cio)">1</div><div class="dqt">When you say "New Frontier Banking Platform" — what does the architecture look like in two years, and what's the single hardest legacy dependency to unwind?</div></div>
+    <div class="dq"><div class="dqn" style="background:var(--cio)">2</div><div class="dqt">At the AI Leadership Group, what's the gap between where AI experimentation is today and where it needs to be in production? What's blocking the transition?</div></div>
+    <div class="dq"><div class="dqn" style="background:var(--cio)">3</div><div class="dqt">How are you thinking about the Salesforce footprint in Banco FBA in a global platform strategy — foundation to build on, or point solution to reassess?</div></div>
+    <div class="dq"><div class="dqn" style="background:var(--cio)">4</div><div class="dqt">You have no legacy ties to current vendors. What's your framework for evaluating a long-term platform partner vs. a best-of-breed point solution?</div></div>
+    <div class="dq"><div class="dqn" style="background:var(--cio)">5</div><div class="dqt">How are you managing integration complexity across three geographies — and where does the MuleSoft layer fit going forward?</div></div>
+    <div class="dq"><div class="dqn" style="background:var(--cio)">6</div><div class="dqt">What's the biggest technical risk to the 4 Pillars transformation timeline right now — and which of those risks could a platform partner absorb?</div></div>
+  </div>
+
+  <!-- COO -->
+  <div class="db hidden" id="disc-coo">
+    <div class="dbh">
+      <div class="dic" style="background:rgba(217,119,6,.1)">💬</div>
+      <div><h3>Discovery Questions — John Bunker (COO)</h3><p>Use these to open the conversation and find where Salesforce creates the most value</p></div>
+    </div>
+    <div class="dq"><div class="dqn" style="background:var(--coo)">1</div><div class="dqt">Your target is 40% cost-to-income by 2030 — a 10-point reduction. Which three operational areas have the most room to move, fastest?</div></div>
+    <div class="dq"><div class="dqn" style="background:var(--coo)">2</div><div class="dqt">When you think about branch repurposing — which branches are first candidates for transformation, and what does success look like there in 12 months?</div></div>
+    <div class="dq"><div class="dqn" style="background:var(--coo)">3</div><div class="dqt">In the call centres, what percentage of interactions could realistically be automated or self-served today — and what's the blocker to getting there?</div></div>
+    <div class="dq"><div class="dqn" style="background:var(--coo)">4</div><div class="dqt">How are you currently measuring agent productivity — and what would a 20% improvement look like for the P&amp;L?</div></div>
+    <div class="dq"><div class="dqn" style="background:var(--coo)">5</div><div class="dqt">For back office digitization — where is the biggest friction: data quality, process design, or getting people to change how they work?</div></div>
+    <div class="dq"><div class="dqn" style="background:var(--coo)">6</div><div class="dqt">When you think about AI-driven operations — what's the one use case that would make the fastest, clearest impact on your cost-to-income number?</div></div>
+  </div>
+</div><!-- end clevel section -->
+
+<!-- ═══════════════════════════════════ SWOT ═══ -->
+<div class="sec" id="swot">
+  <h2>SWOT Analysis</h2>
+  <p style="color:var(--text2);margin-bottom:20px">Strategic landscape for the Salesforce partnership opportunity.</p>
+  <div class="swot">
+    <div class="sb s1">
+      <h3>Strengths</h3>
+      <ul>
+        <li>✓ Established Salesforce footprint in Banco FBA (530+ users)</li>
+        <li>✓ Proven MuleSoft integration layer already in place</li>
+        <li>✓ Strong financials and board-aligned 5-year plan</li>
+        <li>✓ Brazilian market as AI and innovation incubator</li>
+        <li>✓ CXO commitment to the 4 Pillars program</li>
+        <li>✓ January 2027 renewal — a natural strategic inflection point</li>
+      </ul>
+    </div>
+    <div class="sb s2">
+      <h3>Weaknesses</h3>
+      <ul>
+        <li>⚠ Salesforce limited to Brazil — not yet a global platform</li>
+        <li>⚠ Legacy core banking dependencies creating complexity</li>
+        <li>⚠ Three geographies, three regulatory frameworks</li>
+        <li>⚠ Change management challenge at scale across diverse markets</li>
+        <li>⚠ AI in experimentation — not yet embedded in production</li>
+      </ul>
+    </div>
+    <div class="sb s3">
+      <h3>Opportunities</h3>
+      <ul>
+        <li>→ Global rollout of Salesforce across all FBA markets</li>
+        <li>→ Brazil as test market for AI, embedded finance, open banking</li>
+        <li>→ SME and Gen Z segments — underserved, highest-value</li>
+        <li>→ M&A integration platform for future acquisitions</li>
+        <li>→ Branches as advisory hubs with Salesforce as intelligence layer</li>
+        <li>→ Real-time Board-level performance and governance visibility</li>
+      </ul>
+    </div>
+    <div class="sb s4">
+      <h3>Threats</h3>
+      <ul>
+        <li>✕ Microsoft and others actively engaged at C-level</li>
+        <li>✕ Neobanks capturing share with digital-first models</li>
+        <li>✕ Multiple partners in competitive evaluation</li>
+        <li>✕ Rapid AI evolution — window to lead may close quickly</li>
+        <li>✕ Multi-geography execution risk across complex org structure</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════ WHY SF ═══ -->
+<div class="sec" id="salesforce">
+  <h2>Why Salesforce</h2>
+  <div class="card">
+    <h3>Partner, Not Vendor</h3>
+    <p>FBA's CXOs are clear: the partner they choose must minimize execution risk, not just deliver software. That means global scale, a financial services track record, and a model built around outcomes — not licences.</p>
+  </div>
+  <h3>Salesforce Answers the 4 Pillars</h3>
+  <div class="pg">
+    <div class="pill"><h4>Scale & Growth</h4><p>Financial Services Cloud is built for complex, multi-segment banking at scale. From SME relationship management to private client advisory, it gives Hilary the commercial layer to reach 16M+ customers and hit the $65B mortgage target.</p></div>
+    <div class="pill"><h4>Macroeconomic Adaptation</h4><p>Einstein Analytics and real-time dashboards give Tony and the Board live performance and risk visibility — shifting reporting from retrospective to predictive, and connecting the $250M investment to the 2030 targets.</p></div>
+    <div class="pill"><h4>AI & Innovation</h4><p>Einstein AI is embedded across all clouds — not bolted on. It operationalizes AI in the workflows where Richard's teams already work, closing the gap between the AI Leadership Group's ambitions and production reality.</p></div>
+    <div class="pill"><h4>Customer Experience</h4><p>Customer 360 creates a single view across every channel — branch, app, contact centre. Hilary's advisors see the full picture before every conversation. John's agents handle calls with context, not cold starts.</p></div>
+    <div class="pill"><h4>Operational Efficiency</h4><p>Service Cloud and Flow automation eliminate manual processes across contact centres, branches, and back office. John's 40% cost-to-income target has a clear technology path — with measurable milestones along the way.</p></div>
+    <div class="pill"><h4>M&A Ready</h4><p>Salesforce has integrated 1,000+ financial institutions globally. When the next acquisition happens, a common platform reduces integration from years to months — protecting the investment thesis from day one.</p></div>
+  </div>
+  <div class="callout cs"><div class="cl">Competitive edge</div>Salesforce is the #1 CRM in LATAM. The Brazil footprint is not a proof of concept — it's a launchpad. The January 2027 renewal is the moment to expand it globally, not renegotiate it locally.</div>
+</div>
+
+<!-- ═══════════════════════════════════ NEXT STEPS ═══ -->
+<div class="sec" id="nextsteps">
+  <h2>Next Steps</h2>
+  <p style="color:var(--text2);margin-bottom:24px">A clear path from where we are to a partnership agreement and program launch.</p>
+  <div class="tl">
+    <div class="ti"><div class="tn">1</div><div class="tb"><h4>Executive Discovery Meeting</h4><p><strong>Goal:</strong> Validate FBA's strategic priorities and confirm the Salesforce partnership model is the right fit.</p><p><strong>Format:</strong> 2–3 hours | FBA CXOs + Salesforce Executive Team</p></div></div>
+    <div class="ti"><div class="tn">2</div><div class="tb"><h4>Competitive Evaluation & Proposal Refinement</h4><p><strong>Goal:</strong> FBA evaluates vendors. Salesforce deepens discovery on current state, desired outcomes, and stakeholder priorities.</p><p><strong>Timeline:</strong> 2–4 weeks</p></div></div>
+    <div class="ti"><div class="tn">3</div><div class="tb"><h4>Extended Stakeholder Engagement</h4><p><strong>Goal:</strong> Expand beyond CXOs to CFO, CTO, COO, and business unit leads. Validate technical feasibility and scope.</p><p><strong>Timeline:</strong> 3–4 weeks, multiple sessions</p></div></div>
+    <div class="ti"><div class="tn">4</div><div class="tb"><h4>Scope, Roadmap & Commercial Terms</h4><p><strong>Goal:</strong> Full implementation plan — phased delivery, integration architecture, change management, and commercial terms tied to outcomes.</p><ul><li>Global rollout strategy: Brazil → North America → Europe</li><li>Integration architecture and legacy decommissioning plan</li><li>Risk mitigation and governance structure</li><li>Commercial model aligned to business outcomes</li></ul><p><strong>Timeline:</strong> 4–6 weeks</p></div></div>
+    <div class="ti"><div class="tn">5</div><div class="tb"><h4>Partnership Agreement & Program Launch</h4><p><strong>Goal:</strong> Execute the strategic partnership agreement, establish joint governance, and formally launch the transformation program.</p></div></div>
+  </div>
+  <div class="cta"><h3>Let's build something worth building.</h3><p>Salesforce is ready to commit to FBA's transformation — not as a software provider, but as a strategic partner accountable to your outcomes. The conversation starts with a single meeting.</p></div>
+</div>
+
+</main>
+
+<script>
+// ── NAVIGATION
+const navLinks = document.querySelectorAll('.sb-nav a');
+const sections  = document.querySelectorAll('.sec');
+
+navLinks.forEach(link => {
+  link.addEventListener('click', e => {
+    e.preventDefault();
+    const target = link.getAttribute('data-s');
+    sections.forEach(s => s.classList.remove('active'));
+    navLinks.forEach(l => l.classList.remove('active'));
+    const sec = document.getElementById(target);
+    if (sec) { sec.classList.add('active'); link.classList.add('active'); }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+});
+
+// Handle URL hash on load
+const hash = window.location.hash.replace('#','');
+if (hash) {
+  const tgt = document.getElementById(hash);
+  const lnk = document.querySelector(`[data-s="${hash}"]`);
+  if (tgt && lnk) {
+    sections.forEach(s => s.classList.remove('active'));
+    navLinks.forEach(l => l.classList.remove('active'));
+    tgt.classList.add('active'); lnk.classList.add('active');
+  }
+}
+
+// ── C-LEVEL FILTER
+function filterCL(btn, level) {
+  document.querySelectorAll('.fbtn').forEach(b => {
+    b.classList.remove('fa','fc','ff','fi2','fo');
+  });
+  const cls = {all:'fa',cco:'fc',cfo:'ff',cio:'fi2',coo:'fo'};
+  btn.classList.add(cls[level]);
+
+  ['cco','cfo','cio','coo'].forEach(l => {
+    const show = (level !== 'all' && l === level);
+    document.getElementById('prof-' + l).classList.toggle('hidden', !show);
+    document.getElementById('disc-' + l).classList.toggle('hidden', !show);
+  });
+
+  document.querySelectorAll('.pc').forEach(card => {
+    const levels = (card.getAttribute('data-l') || '').split(' ');
+    card.classList.toggle('hidden', level !== 'all' && !levels.includes(level));
+  });
+}
+</script>
 </body>
 </html>
